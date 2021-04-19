@@ -22,7 +22,7 @@ public class MongoImpl implements MongoDb {
     private static MongoCollection<Document> collection;
     private static Date date = new Date();
 
-    public boolean insertTask(String title, String task, int priority, double price) {
+    /*public boolean insertTask(String title, String task, int priority, double price) {
         if(title==null || title.equals("") || task==null || task.equals("") || priority<1 || priority>3 || price<=0)
             return false;
         database=mongoClient.getDatabase("TasksDB");
@@ -38,10 +38,36 @@ public class MongoImpl implements MongoDb {
         collection.insertOne(docs);
         return true;
     }
-
+*/
     @Override
     public void insertTask(Task task) {
+        if(task==null){
+            return;
+        }
+        Document newTask = new Document("name",task.getName()).
+                append("priority",task.getPriority()).
+                append("done",task.isDone()).
+                append("date",task.getDate());
+        if (task.getPrice()>=0){
+            newTask.append("price",task.getPrice());
+        }
+        if (task.getId()!=null){
+            newTask.append("_id",task.getId());
+        }
+        try{
+            MongoCollection<Document> collection = getDocumentMongoCollection();
+            collection.insertOne(newTask);
 
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    private MongoCollection<Document> getDocumentMongoCollection() {
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("TaskDB");
+        MongoCollection<Document> collection = db.getCollection("Tasks");
+        return collection;
     }
 
     @Override
