@@ -54,4 +54,10 @@ public class Task {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Task ==> id: " + id + " Name: " + name + " Priority: " + priority + " Done: " + done + " Date: " + date +
+                (price>=0?(" Price : "+price):"");
+    }
 }
