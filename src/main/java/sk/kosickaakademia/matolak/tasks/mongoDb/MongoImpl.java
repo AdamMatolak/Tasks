@@ -22,23 +22,6 @@ public class MongoImpl implements MongoDb {
     private static MongoCollection<Document> collection;
     private static Date date = new Date();
 
-    /*public boolean insertTask(String title, String task, int priority, double price) {
-        if(title==null || title.equals("") || task==null || task.equals("") || priority<1 || priority>3 || price<=0)
-            return false;
-        database=mongoClient.getDatabase("TasksDB");
-        collection = database.getCollection("Tasks");
-        docs=new Document("task",task);
-        docs= new Document();
-        docs.append("date", date);
-        docs.append("title", title);
-        docs.append("task", task);
-        docs.append("priority", priority);
-        docs.append("price", price);
-        docs.append("done", false);
-        collection.insertOne(docs);
-        return true;
-    }
-*/
     @Override
     public void insertTask(Task task) {
         if(task==null){
