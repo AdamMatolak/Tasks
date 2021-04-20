@@ -2,6 +2,7 @@ package sk.kosickaakademia.matolak.tasks.mongoDb;
 
 import com.mongodb.client.FindIterable;
 import org.bson.types.ObjectId;
+import org.json.simple.JSONObject;
 import sk.kosickaakademia.matolak.tasks.collection.Task;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -15,7 +16,7 @@ import java.util.List;
 
 import java.util.List;
 
-public class MongoImpl implements MongoDb {
+public class MongoImpl implements MongoDb, MongoJSON {
 
     //dbname: TaskDB
     //collection: Tasks
@@ -110,5 +111,15 @@ public class MongoImpl implements MongoDb {
     @Override
     public void DeleteFinishedTasks() {
 
+    }
+
+    @Override
+    public void insertTaskJSON(JSONObject task) {
+
+    }
+
+    @Override
+    public JSONObject getAllTasksJSON() {
+        return null;
     }
 }

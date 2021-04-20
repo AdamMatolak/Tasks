@@ -5,7 +5,12 @@ import sk.kosickaakademia.matolak.tasks.collection.Task;
 import java.util.List;
 
 public interface MongoDb {
-
+    /**
+     * description
+     * @param task
+     * @author Adam
+     * @version 1.0
+     */
     public void insertTask(Task task);
 
     public void makeTaskDone(int id);
