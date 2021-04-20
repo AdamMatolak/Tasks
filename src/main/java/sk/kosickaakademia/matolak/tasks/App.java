@@ -28,7 +28,7 @@ public class App
     }
 
     public static void testAddNewTask(){
-        Task task = new Task("Papať piškotky",10,false, new Date(),20);
+        Task task = new Task("kupiť chleba",6,false, new Date(),2);
         MongoImpl mongo = new MongoImpl();
         mongo.insertTask(task);
     }
